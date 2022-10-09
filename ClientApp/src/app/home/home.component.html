@@ -1,8 +1,18 @@
 <div class="text-center">
 
-<h2>QrCode: {{numeroQrCode}}</h2>
 
-<zxing-scanner (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
+  <div *ngIf="!foto">
+    <zxing-scanner (scanSuccess)="scanSuccessHandler($event)"></zxing-scanner>
+  </div>
+
+  <div *ngIf="foto">
+    <img src="{{'data:image/jpg;base64,' + foto}}" />
+    <br />
+    <br />
+    <button type="button" class="btn btn-success" (click)="foto = null">Liberar</button>
+  </div>
+
+
 
 </div>
 
@@ -19,8 +29,6 @@
           </h3>
         </div>
       </div>
-
-      <h2>Numero QrCode: {{numeroQrCode}}</h2>
 
       <div class="kt-portlet__body">
         <zxing-scanner #scanner (scanSuccess)="scanSuccessHandler($event)">
@@ -57,4 +65,3 @@
   </div>
 
 </div>-->
-
